@@ -1,0 +1,21 @@
+<%= form_tag '/movies', method: :post do %>
+  <div class='form-group'>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, "", placeholder: "Movie Title", class: "form-control" %>
+  </div>
+  <div class='form-group'>
+    <%= label_tag :length %>
+    <%= text_field_tag :length, "", placeholder: "Movie Length", class: "form-control" %>
+  </div>
+  <div class='form-group'>
+    <%= label_tag :year %>
+    <%= text_field_tag :year, "", placeholder: "Movie Year", class: "form-control" %>
+  </div>
+  <div class='form-group'>
+    <%= label_tag :description %>
+    <%= text_field_tag :description, "", placeholder: "Movie Description", class: "form-control" %>
+  </div>
+  <div>
+    <%= submit_tag "Create Movie" %>
+  </div>
+<% end %>
