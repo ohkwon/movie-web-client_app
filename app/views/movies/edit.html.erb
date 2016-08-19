@@ -1,0 +1,24 @@
+<%= form_tag "/movies/#{@movie["id"]}", method: :patch do %>
+  <div class='form-group'>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, @movie["name"], placeholder: "Movie Title", class: "form-control" %>
+  </div>
+  <div class='form-group'>
+    <%= label_tag :length %>
+    <%= text_field_tag :length, @movie["length"], placeholder: "Movie Length", class: "form-control" %>
+  </div>
+  <div class='form-group'>
+    <%= label_tag :year %>
+    <%= text_field_tag :year, @movie["year"], placeholder: "Movie Year", class: "form-control" %>
+  </div>
+  <div class='form-group'>
+    <%= label_tag :description %>
+    <%= text_field_tag :description, @movie["description"], placeholder: "Movie Description", class: "form-control" %>
+  </div>
+  <div>
+    <%= hidden_field_tag :id, @movie[:id] %>
+  </div>
+  <div>
+    <%= submit_tag "Update Movie" %>
+  </div>
+<% end %>
