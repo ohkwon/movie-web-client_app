@@ -2,13 +2,13 @@ class MoviesController < ApplicationController
 
   def show
 
-    @movie = Unirest.get("http://localhost:3000/api/v1/movies/#{params[:id]}.json").body
+    @movie = Unirest.get("https://api-builder-movies-app.herokuapp.com/api/v1/movies/#{params[:id]}.json").body
 
   end
 
   def index
 
-    @movies = Unirest.get("http://localhost:3000/api/v1/movies.json").body
+    @movies = Unirest.get("https://api-builder-movies-app.herokuapp.com/api/v1/movies.json").body
 
   end
 
@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
 
   def create
 
-    @movie = Unirest.post("http://localhost:3000/api/v1/movies.json",
+    @movie = Unirest.post("https://api-builder-movies-app.herokuapp.com/api/v1/movies.json",
       headers: {Accept: "application/json"},
       parameters: {
         name: params[:name],
@@ -34,13 +34,13 @@ class MoviesController < ApplicationController
 
   def edit
 
-    @movie = Unirest.get("http://localhost:3000/api/v1/movies/#{params[:id]}.json").body
+    @movie = Unirest.get("https://api-builder-movies-app.herokuapp.com/api/v1/movies/#{params[:id]}.json").body
     
   end
 
   def update
 
-    @movie = Unirest.patch("http://localhost:3000/api/v1/movies/#{params[:id]}.json",
+    @movie = Unirest.patch("https://api-builder-movies-app.herokuapp.com/api/v1/movies/#{params[:id]}.json",
       headers: {Accept: "application/json"},
       parameters: {
         name: params[:name],
