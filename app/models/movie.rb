@@ -39,13 +39,7 @@ class Movie
 
     @movie = Unirest.patch("#{ENV['DOMAIN']}/movies/#{hash["id"]}.json",
       headers: {Accept: "application/json"},
-      parameters: {
-        name: hash[:name],
-        length: hash[:length],
-        year: hash[:year],
-        description: hash[:description]
-      }
-    )
+      parameters: hash)
 
     return @movie
 
@@ -55,13 +49,7 @@ class Movie
 
     @movie = Unirest.post("#{ENV['DOMAIN']}/movies.json",
       headers: {Accept: "application/json"},
-      parameters: {
-        name: hash[:name],
-        length: hash[:length],
-        year: hash[:year],
-        description: hash[:description]
-      }
-    )
+      parameters: hash)
 
     return @movie
 
