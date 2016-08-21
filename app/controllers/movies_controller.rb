@@ -2,18 +2,13 @@ class MoviesController < ApplicationController
 
   def show
 
-    movie_hash = Unirest.get("#{ENV['DOMAIN']}/movies/#{params[:id]}.json").body
-    @movie = Movie.new(movie_hash)
+    @movie = Movie.find(params[:id])
 
   end
 
   def index
 
-    movies_array = Unirest.get("#{ENV['DOMAIN']}/movies.json").body
-    @movies = []
-    movies_array.each do |hash|
-      @movies << Movie.new(hash)
-    end
+    @movies = Movie.all
 
   end
 
@@ -63,7 +58,9 @@ class MoviesController < ApplicationController
 
   def destroy
 
-    @movie = Unirest.delete("http://localhost:3000/api/v1/movies/#{params[:id]}.json").body
+    # @movie = Unirest.delete("http://localhost:3000/api/v1/movies/#{params[:id]}.json").body
+
+    Movie.destroy(params[:id])
 
     redirect_to "/movies"
     
