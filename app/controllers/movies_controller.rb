@@ -40,19 +40,19 @@ class MoviesController < ApplicationController
 
   def update
 
-    @movie = Unirest.patch("#{ENV['DOMAIN']}/movies/#{params[:id]}.json",
-      headers: {Accept: "application/json"},
-      parameters: {
-        name: params[:name],
-        length: params[:length],
-        year: params[:year],
-        description: params[:description]
-      }
-    )
+    # @movie = Unirest.patch("#{ENV['DOMAIN']}/movies/#{params[:id]}.json",
+    #   headers: {Accept: "application/json"},
+    #   parameters: {
+    #     name: params[:name],
+    #     length: params[:length],
+    #     year: params[:year],
+    #     description: params[:description]
+    #   }
+    # )
 
-    binding.pry
+    @movie = Movie.find(params[:id]).update(params[:id], params[:name], params[:length], params[:year], params[:description])
 
-    redirect_to "/movies/#{params["id"]}"
+    redirect_to "/movies/#{params[:id]}"
     
   end
 

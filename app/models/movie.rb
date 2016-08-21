@@ -35,4 +35,20 @@ class Movie
 
   end
 
+  def update(id, name, length, year, description)
+
+    @movie = Unirest.patch("#{ENV['DOMAIN']}/movies/#{id}.json",
+      headers: {Accept: "application/json"},
+      parameters: {
+        name: name,
+        length: length,
+        year: year,
+        description: description
+      }
+    )
+
+    return @movie
+
+  end
+
 end
