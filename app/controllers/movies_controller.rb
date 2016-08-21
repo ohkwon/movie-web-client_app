@@ -18,15 +18,24 @@ class MoviesController < ApplicationController
 
   def create
 
-    @movie = Unirest.post("#{ENV['DOMAIN']}/movies.json",
-      headers: {Accept: "application/json"},
-      parameters: {
-        name: params[:name],
-        length: params[:length],
-        year: params[:year],
-        description: params[:description]
-      }
-    )
+    # @movie = Unirest.post("#{ENV['DOMAIN']}/movies.json",
+    #   headers: {Accept: "application/json"},
+    #   parameters: {
+    #     name: params[:name],
+    #     length: params[:length],
+    #     year: params[:year],
+    #     description: params[:description]
+    #   }
+    # )
+
+    movie_hash = {
+      name: params[:name],
+      length: params[:length],
+      year: params[:year],
+      description: params[:description]
+    }
+
+    @movie = Movie.create(movie_hash)
 
     redirect_to "/movies"
 
@@ -50,7 +59,15 @@ class MoviesController < ApplicationController
     #   }
     # )
 
-    @movie = Movie.find(params[:id]).update(params[:id], params[:name], params[:length], params[:year], params[:description])
+    movie_hash = {
+      id: params[:id],
+      name: params[:name],
+      length: params[:length],
+      year: params[:year],
+      description: params[:description]
+    }
+
+    @movie = Movie.find(params[:id]).update(movie_hash)
 
     redirect_to "/movies/#{params[:id]}"
     

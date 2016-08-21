@@ -35,15 +35,31 @@ class Movie
 
   end
 
-  def update(id, name, length, year, description)
+  def update(hash)
 
-    @movie = Unirest.patch("#{ENV['DOMAIN']}/movies/#{id}.json",
+    @movie = Unirest.patch("#{ENV['DOMAIN']}/movies/#{hash["id"]}.json",
       headers: {Accept: "application/json"},
       parameters: {
-        name: name,
-        length: length,
-        year: year,
-        description: description
+        name: hash[:name],
+        length: hash[:length],
+        year: hash[:year],
+        description: hash[:description]
+      }
+    )
+
+    return @movie
+
+  end
+
+  def self.create(hash)
+
+    @movie = Unirest.post("#{ENV['DOMAIN']}/movies.json",
+      headers: {Accept: "application/json"},
+      parameters: {
+        name: hash[:name],
+        length: hash[:length],
+        year: hash[:year],
+        description: hash[:description]
       }
     )
 
