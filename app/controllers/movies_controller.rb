@@ -2,7 +2,8 @@ class MoviesController < ApplicationController
 
   def show
 
-    @movie = Unirest.get("#{ENV['DOMAIN']}/movies/#{params[:id]}.json").body
+    movie_hash = Unirest.get("#{ENV['DOMAIN']}/movies/#{params[:id]}.json").body
+    @movie = Movie.new(movie_hash)
 
   end
 
