@@ -9,7 +9,11 @@ class MoviesController < ApplicationController
 
   def index
 
-    @movies = Unirest.get("#{ENV['DOMAIN']}/movies.json").body
+    movies_array = Unirest.get("#{ENV['DOMAIN']}/movies.json").body
+    @movies = []
+    movies_array.each do |hash|
+      @movies << Movie.new(hash)
+    end
 
   end
 
