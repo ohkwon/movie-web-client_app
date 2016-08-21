@@ -18,16 +18,6 @@ class MoviesController < ApplicationController
 
   def create
 
-    # @movie = Unirest.post("#{ENV['DOMAIN']}/movies.json",
-    #   headers: {Accept: "application/json"},
-    #   parameters: {
-    #     name: params[:name],
-    #     length: params[:length],
-    #     year: params[:year],
-    #     description: params[:description]
-    #   }
-    # )
-
     movie_hash = {
       name: params[:name],
       length: params[:length],
@@ -49,16 +39,6 @@ class MoviesController < ApplicationController
 
   def update
 
-    # @movie = Unirest.patch("#{ENV['DOMAIN']}/movies/#{params[:id]}.json",
-    #   headers: {Accept: "application/json"},
-    #   parameters: {
-    #     name: params[:name],
-    #     length: params[:length],
-    #     year: params[:year],
-    #     description: params[:description]
-    #   }
-    # )
-
     movie_hash = {
       id: params[:id],
       name: params[:name],
@@ -74,8 +54,6 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-
-    # @movie = Unirest.delete("http://localhost:3000/api/v1/movies/#{params[:id]}.json").body
 
     Movie.destroy(params[:id])
 
