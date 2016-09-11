@@ -8,12 +8,7 @@ class MoviesController < ApplicationController
 
   def index
 
-    @movies = Unirest.get("http://localhost:3000/api/v1/movies",
-      headers:{
-        "accept" => "application/json",
-        "Authorization" => "Token token=1337",
-        "X-User-Email" => "leet@gmail.com"
-        }).body
+    @movies = Movie.all
 
   end
 

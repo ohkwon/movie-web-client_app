@@ -19,7 +19,12 @@ class Movie
 
   def self.all
 
-    movies_array = Unirest.get("#{ENV['DOMAIN']}/movies.json").body
+    movies_array = Unirest.get("http://localhost:3000/api/v1/movies",
+      headers:{
+        "accept" => "application/json",
+        "Authorization" => "Token token=1337",
+        "X-User-Email" => "leet@gmail.com"
+        }).body
     @movies = []
     movies_array.each do |hash|
       @movies << Movie.new(hash)
