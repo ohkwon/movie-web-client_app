@@ -7,10 +7,10 @@
   </tr>
   <% @movies.each do |movie| %>
     <tr>
-      <td><%= movie.name %></td>
-      <td><%= movie.length %></td>
-      <td><%= movie.description %></td>
-      <td><%= movie.year %></td>
+      <td><%= movie["name"] %></td>
+      <td><%= movie["length"] %></td>
+      <td><%= movie["description"] %></td>
+      <td><%= movie["year"] %></td>
     </tr>
   <% end %>
 </table>
